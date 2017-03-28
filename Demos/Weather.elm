@@ -63,8 +63,7 @@ type Msg
 
 lookup : Int -> Maybe City
 lookup woeid =
-    List.filter (\c -> c.woeid == woeid) cities
-        |> List.head
+    List.filter (\c -> c.woeid == woeid) cities |> List.head
 
 
 init : ( Model, Cmd Msg )
@@ -126,9 +125,10 @@ decodeWeather =
         (at [ "query", "results", "channel", "item", "condition", "text" ] string)
 
 
-options : List (Html Msg)
-options =
-    List.map (\city -> option [ value (toString city.woeid) ] [ text (city.name) ]) cities
+
+-- options : List (Html Msg)
+-- options =
+--     List.map (\city -> option [ value (toString city.woeid) ] [ text city.name ]) cities
 
 
 renderWeather : Model -> Html Msg
@@ -161,13 +161,17 @@ renderWeather model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ select
-            [ onInput (\s -> String.toInt s |> Result.withDefault durban.woeid |> SelectedWoeid)
+    let
+        options =
+            List.map (\city -> option [ value (toString city.woeid) ] [ text city.name ]) cities
+    in
+        div []
+            [ select
+                [ onInput (\s -> String.toInt s |> Result.withDefault durban.woeid |> SelectedWoeid)
+                ]
+                options
+            , div [] [ renderWeather model ]
             ]
-            options
-        , div [] [ renderWeather model ]
-        ]
 
 
 main : Program Never Model Msg
