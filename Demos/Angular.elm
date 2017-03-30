@@ -1,3 +1,6 @@
+-- Angular-style biding in Elm
+
+
 module Angular exposing (..)
 
 import Html exposing (..)
