@@ -17,23 +17,27 @@ type Msg
     = Name String
 
 
-model : Model
-model =
+initialModel : Model
+initialModel =
     { name = "" }
 
 
-view : Model -> Html Msg
-view model =
+myView : Model -> Html Msg
+myView model =
     div []
         [ input [ value (model.name), onInput Name ] []
         , div [] [ text ("Hello " ++ model.name) ]
         ]
 
 
-update : Msg -> Model -> Model
-update (Name s) model =
+myUpdate : Msg -> Model -> Model
+myUpdate (Name s) model =
     { model | name = s }
 
 
 main =
-    Html.beginnerProgram { model = model, view = view, update = update }
+    Html.beginnerProgram
+        { model = initialModel
+        , view = myView
+        , update = myUpdate
+        }

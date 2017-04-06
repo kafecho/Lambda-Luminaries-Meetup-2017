@@ -10,20 +10,17 @@
         <script>
         var node = document.getElementById('elm');
         var app = Elm.Trailer.embed(node);
-        app.ports.setCurrentTime.subscribe(function(time) {
-            var video = document.getElementById('video-player');
-            video.currentTime = time;
-        });
-
-        app.ports.setCurrentTime.subscribe(function(time) {
-            var video = document.getElementById('video-player');
-            video.currentTime = time;
-        });
 
         app.ports.play.subscribe(function() {
             var video = document.getElementById('video-player');
             video.play();
         });
+
+        app.ports.setCurrentTime.subscribe(function(time) {
+            var video = document.getElementById('video-player');
+            video.currentTime = time;
+        });
+
 
         app.ports.pause.subscribe(function() {
             var video = document.getElementById('video-player');
