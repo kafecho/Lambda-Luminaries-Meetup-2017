@@ -61,19 +61,14 @@ type Msg
     | WeatherUpdate (Result Http.Error Weather)
 
 
-lookup : Int -> Maybe City
-lookup woeid =
-    List.filter (\c -> c.woeid == woeid) cities |> List.head
-
-
 init : ( Model, Cmd Msg )
 init =
     ( { city = durban, status = Fetching }, getWeather durban.woeid )
 
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
+lookup : Int -> Maybe City
+lookup woeid =
+    List.filter (\c -> c.woeid == woeid) cities |> List.head
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -125,10 +120,9 @@ decodeWeather =
         (at [ "query", "results", "channel", "item", "condition", "text" ] string)
 
 
-
--- options : List (Html Msg)
--- options =
---     List.map (\city -> option [ value (toString city.woeid) ] [ text city.name ]) cities
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
 
 
 renderWeather : Model -> Html Msg
