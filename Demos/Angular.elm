@@ -1,4 +1,4 @@
--- Angular-style biding in Elm
+-- Angular-style binding in Elm
 
 
 module Angular exposing (..)
