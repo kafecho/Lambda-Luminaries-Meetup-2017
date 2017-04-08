@@ -14,7 +14,7 @@ type alias Person =
     }
 
 
-members =
+attendees =
     [ Person "Guillaume" Elm
     , Person "Andreas" Scala
     , Person "Handré" Haskell

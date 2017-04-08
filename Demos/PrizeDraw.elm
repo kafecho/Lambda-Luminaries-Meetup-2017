@@ -25,7 +25,7 @@ type Msg
 
 init : ( Model, Cmd Msg )
 init =
-    ( { pool = members
+    ( { pool = attendees
       , potentialWinner = Nothing
       , winners = []
       }
