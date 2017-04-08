@@ -14,6 +14,7 @@ type alias Person =
     }
 
 
+attendees : List Person
 attendees =
     [ Person "Guillaume" Elm
     , Person "Andreas" Scala
