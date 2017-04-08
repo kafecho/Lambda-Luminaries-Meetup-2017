@@ -259,7 +259,7 @@ elm-make HelloElm.elm --output HelloElm.js
 # JavaScript interop with ports
 
 - Port: bridge between Elm and JavaScript
-- Define an Elm _interface_ for the outgoing / incoming side effects
+- Define Elm _interfaces_ for the outgoing / incoming side effects
 - Write some JS code for the side effects
 - _JavaScript as a Service_
 
