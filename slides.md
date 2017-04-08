@@ -265,15 +265,17 @@ elm-make HelloElm.elm --output HelloElm.js
 
 
 ---
-# Port from Elm
+# Ports from Elm
 
 ```elm
 port play : () -> Cmd msg
+
+port setCurrentTime : Float -> Cmd msg
 ```
 
 ---
 
-# Port from JavaScript
+# Ports from JavaScript
 
 ```html
 <div id="elm"></div>
@@ -281,12 +283,17 @@ port play : () -> Cmd msg
 <script>
     var node = document.getElementById('elm');
     var app = Elm.Trailer.embed(node);
+
     app.ports.play.subscribe(function(){
         var video = document.getElementById('video-player');
         video.play();
     });
-```
 
+    app.ports.setCurrentTime.subscribe(function(time) {
+        var video = document.getElementById('video-player');
+        video.currentTime = time;
+    });
+```
 ---
 
 # A video video-player
@@ -294,6 +301,15 @@ port play : () -> Cmd msg
 ## Live coding attempt #4
 
 ---
+# What about testing?
+
+- Use the compiler as much as possible
+ - Making impossible states impossible
+- Unit testing / property-based testing with elm-test
+- Use Capybara / webdriver.io for end to end / acceptance tests
+
+---
+
 # Elm cons
 
 - Might not be your type
