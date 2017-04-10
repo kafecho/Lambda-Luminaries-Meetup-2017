@@ -309,6 +309,22 @@ port setCurrentTime : Float -> Cmd msg
 - Use Capybara / webdriver.io for end to end / acceptance tests
 
 ---
+# Fuzz tests
+```elm
+addOneTests : Test
+addOneTests =
+    describe "addOne"
+        [ fuzz int "adds 1 to any integer" <|
+            \num ->
+                addOne num |> Expect.equal (num + 1)
+        ]
+
+addOne : Int -> Int
+addOne x =
+    1 + x
+```
+
+---
 
 # Elm cons
 
